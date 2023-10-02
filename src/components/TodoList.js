@@ -1,10 +1,10 @@
-const Header= () =>{
-    return (
-        <header>
-            <h1>todos</h1>
-            <p>Items will persist in the browser local storage</p>
-        </header>
-    );
-};
+import TodoItem from './TodoItem';
 
-export default Header;
+const TodosList = ({ todosProps }) => (
+  <ul>
+    {todosProps.map((todo) => (
+      <TodoItem key={todo.id} itemProp={todo} />
+    ))}
+  </ul>
+);
+export default TodosList;
