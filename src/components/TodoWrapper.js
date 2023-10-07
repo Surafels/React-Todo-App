@@ -21,6 +21,9 @@ const TodoWrapper = () => {
     ...todo, completed : !todo.completed} : todo));
    
   }
+  const deleteTodo = id =>{
+    setTodos(todos.filter(todo =>todo.id !== id))
+  }
   return (
     <div>
       <h1>Todos</h1>
@@ -28,7 +31,8 @@ const TodoWrapper = () => {
         <TodoForm addTodo={addTodo} />
         {todos.map((todo, index) => (
           <Todo task={todo} key={index}
-          toggleComplete={toggleComplete} />
+          toggleComplete={toggleComplete}
+           deleteTodo= {deleteTodo}/>
         ))}
       </div>
 
