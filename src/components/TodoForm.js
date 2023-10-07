@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 
 const TodoForm = ({ addTodo }) => {
   const [value, setValue] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addTodo(value);
-    setValue = '';
+    setValue('');
   };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form">
       <input
         type="text"
-        placeholder="What is the task tody?"
+        placeholder="What is the task today?"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
@@ -19,4 +21,5 @@ const TodoForm = ({ addTodo }) => {
     </form>
   );
 };
+
 export default TodoForm;
