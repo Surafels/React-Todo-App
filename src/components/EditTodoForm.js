@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const EditTodoForm = ({ editTodo, task }) => {
-  const [value, setValue] = useState(task.task);
+const EditTodoForm = ({ editTodo, task: initialTask }) => {
+  const [task, setTask] = useState(initialTask.task);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editTodo(task.id, value);
-    setValue('');
-    task.isEditing = false; // Toggle off the editing mode
+    editTodo(initialTask.id, task);
+  };
+
+  const handleChange = (e) => {
+    setTask(e.target.value);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
-      <input
-        type="text"
-        placeholder="update task"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <button type="submit">Update Task</button>
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={task} onChange={handleChange} />
+      <button type="submit">Save</button>
     </form>
   );
 };
@@ -29,6 +26,8 @@ EditTodoForm.propTypes = {
   task: PropTypes.shape({
     id: PropTypes.string.isRequired,
     task: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    isEditing: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
