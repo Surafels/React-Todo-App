@@ -57,5 +57,15 @@
     margin-top: 5px;
     display: block;
   }
+  ul{
+    list-style: none;
+  }
+  .textInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dfdfdf;
+    outline: none;
+  }
+  
   
   
